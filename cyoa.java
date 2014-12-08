@@ -17,7 +17,9 @@ class cyoa{
             		int num =tree.getCount(tree.getCurrent());
             		tree.getOp(tree.getCurrent())[num]=tree.op(line);
             		tree.countAdd(tree.getCurrent());
-            	}break;
+            	}else{
+            		System.err.println("You can't add an option before you create a room.");
+            		auxlib.quit();}break;
             	case "d" : if(!tree.isEmpty()){
             		tree.addDesc(tree.getCurrent(),line);
             	}else{
@@ -34,8 +36,9 @@ class cyoa{
         scan.close();
         if(tree.tagCheck()==true)
         	play(tree);
-        else
+        else{
         	System.err.println("ERROR: You Can't set a destination tag for a room that doesn't exist.");
+        	auxlib.quit();
 	}
 	static void play(Tree t){
 		Scanner in = new Scanner(System.in);

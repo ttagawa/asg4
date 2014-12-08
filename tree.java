@@ -26,7 +26,7 @@ class Tree {
     }
     private Node root;
     private Node current;
-
+    public Deque<String> st= new LinkedList<String>();
     public void insert(String key) {
         Node newN = new Node(key);
         if (root == null) {
@@ -76,6 +76,9 @@ class Tree {
     public Node getCurrent() {
         return current;
     }
+    public void setCur(){
+        current=root;
+    }
     public boolean isEmpty(){
         if(root==null)
             return true;
@@ -103,7 +106,7 @@ class Tree {
             return op;
         }
         public void addDesc(Node cur,String d){
-            cur.descriptions +=d +"\n";
+            cur.descriptions +="\n"+d+"\n";
         }
         public String getDesc(Node cur){
             return cur.descriptions;
@@ -111,8 +114,45 @@ class Tree {
         public String getText(Node cur){
             return cur.options[cur.count-1].text;
         }
+        public String getText2(Option op){
+            return op.text;
+        }
+        public String getDest(Option op){
+            return op.destination;
+        }
         public String getDest(Node cur){
             return cur.options[cur.count-1].destination;
+        }
+        public void printTree(Node cur){
+            if ( cur== null)
+            return;
+        printTree(cur.left);
+        String room=" : ";
+        for(int i=0;i<cur.count;i++){
+            room+=cur.options[i].destination+" ";
+        }
+        System.out.println(cur.key+room);
+        printTree(cur.right);
+        }
+        
+        public void printOptions(Node cur){
+            for(int i=0;i<cur.count;i++){
+                switch(i){
+                    case 0:System.out.println("a - "+cur.options[i].text); break;
+                    case 1:System.out.println("b - "+cur.options[i].text); break;
+                    case 2:System.out.println("c - "+cur.options[i].text); break;
+                    case 3:System.out.println("d - "+cur.options[i].text); break;
+                    case 4:System.out.println("e - "+cur.options[i].text); break;
+                    case 5:System.out.println("f - "+cur.options[i].text); break;
+                    case 6:System.out.println("g - "+cur.options[i].text); break;
+                    case 7:System.out.println("h - "+cur.options[i].text); break;
+                    case 8:System.out.println("i - "+cur.options[i].text); break;
+                    case 9:System.out.println("j - "+cur.options[i].text); break;
+                    case 10:System.out.println("k - "+cur.options[i].text); break;
+                    case 11:System.out.println("l - "+cur.options[i].text); break;
+                }
+            }
+            System.out.print("\n");
         }
 
 }

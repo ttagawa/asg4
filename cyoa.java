@@ -32,7 +32,10 @@ class cyoa{
             
         }
         scan.close();
-        play(tree);
+        if(tree.tagCheck()==true)
+        	play(tree);
+        else
+        	System.err.println("ERROR: You Can't set a destination tag for a room that doesn't exist.");
 	}
 	static void play(Tree t){
 		Scanner in = new Scanner(System.in);

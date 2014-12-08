@@ -27,6 +27,7 @@ class Tree {
     private Node root;
     private Node current;
     public Deque<String> st= new LinkedList<String>();
+    public Deque<String> tags=new LinkedList<String>();
     public void insert(String key) {
         Node newN = new Node(key);
         if (root == null) {
@@ -69,6 +70,22 @@ class Tree {
         }
         current = cur;
     }
+
+     public boolean check(String key) {
+        if (root == null) {
+            return false;
+        }
+        Node cur = root;
+        while (!cur.key.equals(key)) {
+            if (key.compareTo(cur.key) < 0)
+                cur = cur.left;
+            else
+                cur = cur.right;
+            if (cur == null)
+                return false;
+        }
+        return true;
+    }
    
     public Node getRoot() {
         return root;
@@ -100,6 +117,7 @@ class Tree {
         }
         public void addDest(Node cur, String line){
             cur.options[cur.count-1].destination=line;
+            this.tags.add(line);
         }
         public Option op(String text){
             Option op = new Option(text);
@@ -134,7 +152,13 @@ class Tree {
         System.out.println(cur.key+room);
         printTree(cur.right);
         }
-        
+        public boolean tagCheck(){
+            while(tags.peek()!=null){
+                if(check(tags.remove())==false)
+                    return false;
+            }
+            return true;
+        }
         public void printOptions(Node cur){
             for(int i=0;i<cur.count;i++){
                 switch(i){

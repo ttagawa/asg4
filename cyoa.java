@@ -40,6 +40,7 @@ class cyoa{
         	System.err.println("ERROR: You Can't set a destination tag for a room that doesn't exist.");
         	auxlib.quit();
 	}
+}
 	static void play(Tree t){
 		Scanner in = new Scanner(System.in);
 		System.out.println(t.getDesc(t.getRoot()));

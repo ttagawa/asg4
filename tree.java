@@ -1,3 +1,7 @@
+//Name:Tyler Tagawa CruzID:1360833 class:cmps 12b
+//date:12/8/14 filename:tree.java
+//description:Binary search tree that holds the data for the game.
+
 import static java.lang.System.*;
 import java.util.*;
 
@@ -105,6 +109,10 @@ class Tree {
       public int getCount(Node cur){
             return cur.count;
         }
+
+    public String getKey(Node cur){
+       return cur.key;
+    }
         public Option[] getOp(Node cur){
             return cur.options;
         }

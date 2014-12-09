@@ -1,0 +1,93 @@
+#Name:Tyler Tagawa CruzID:1360833 class:cmps 12b
+#date:12/8/14 filename:demo.adventure
+#description:My demo file for cyoa.
+
+r entrance
+d Welcome to Pablo Escobar's mansion. 
+d Pablo has lost his "baking soda" somewhere in his mansion. Help him find it.
+o Don't help him.
+t lose
+o Go check the kitchen.
+t kitchen
+
+r lose
+d Wow thanks for helping... not.
+d You lose!
+d Enter r to restart or q to quit.
+
+r kitchen
+d Hey you found some baking soda you should go to Pablo's room and show him.
+o Show Pablo what you found.
+t bedroom
+
+r bedroom
+d You found the baking soda, but Pablo insists that it isn't the baking soda he's looking for. What a picky guy.
+o Look in the tiger cage.
+t cage
+o Look in the pool house
+t poolhouse
+
+
+r cage
+d Hmmmm... this looks kind of dangerous. Hopefully it's in here.
+d RAWRRR!!!! 
+d You have been eaten by the tiger.
+d You lose!
+d Enter r to restart or q to quit.
+
+r poolhouse
+d Just looks like pool stuff in here.
+o Check out the shooting range.
+t gunrange
+o Check out the art gallery.
+t gallery
+o Go for a swim
+t pool
+
+r pool
+d This water feels nice.
+o Keep swimming
+t pool
+o Go look at some fish swim.
+t aquarium
+o Go look at some art.
+t gallery
+
+r gunrange
+d POW POW! BANG BANG!
+d I don't see any baking soda in here. Just Pablo's scary friends.
+o Hide from Pablo's friends in the aquarium.
+t aquarium
+o Try hanging out with Pablo's friends.
+t dirt
+
+r dirt
+d BANG BANG!
+d Uh oh. Pablo's friends have killed you.
+d You lose!
+d Enter r to restart or q to quit.
+
+r gallery
+d Wow look at all this art.  Pablo has quite the impressive art collection, but it doesn't look like the baking soda is here.
+o Steal some of Pablo's expensive art.
+t dirt
+o Go check the pool house
+t poolhouse
+
+r aquarium
+d Wow look at all the pretty fishies.
+d Hey there's a big bag labeled "baking soda".
+o Go show Pablo.
+t bedroom2
+o Nawww I think I'm going to keep looking at fish.
+t aquarium
+o I'd rather go swimming.
+t pool
+
+r bedroom2
+d You show it to Pablo.
+d Pablos screams, "Woooo I got baking soda I got baking soda!!!"
+d Yay you win!!! Now go celebrate with Pablo! 
+d Enter r to resart or q to quit.
+
+

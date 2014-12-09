@@ -1,3 +1,7 @@
+//Name:Tyler Tagawa CruzID:1360833 class:cmps 12b
+//date:12/8/14 filename:cyoa.java
+//description:processes the file and has the main method for the game.
+
 import java.io.*;
 import java.util.*;
 import static java.lang.System.*;
@@ -13,13 +17,17 @@ class cyoa{
             String line = read.substring(2, read.length());
             switch(c){
             	case "r": tree.insert(line); break;
-            	case "o" : if(!tree.isEmpty()){
+            	case "o" : try{if(!tree.isEmpty()){
             		int num =tree.getCount(tree.getCurrent());
             		tree.getOp(tree.getCurrent())[num]=tree.op(line);
             		tree.countAdd(tree.getCurrent());
             	}else{
             		System.err.println("You can't add an option before you create a room.");
-            		auxlib.quit();}break;
+            		auxlib.quit();}
+            					}catch(ArrayIndexOutOfBoundsException e){
+            						auxlib.die("You can't have more than 12 options in one room.");
+            						}
+            		break;
             	case "d" : if(!tree.isEmpty()){
             		tree.addDesc(tree.getCurrent(),line);
             	}else{
@@ -59,7 +67,7 @@ class cyoa{
 
 				case"y": t.printTree(t.getRoot()); break;
 
-				case"z": try{t.finder(t.st.remove());
+				case"z": try{t.finder(t.st.removeLast());
 				System.out.println(t.getDesc(t.getCurrent()));
 				t.printOptions(t.getCurrent());}catch(NoSuchElementException e){
 					System.err.println("You can't undo anymore.");
@@ -67,7 +75,7 @@ class cyoa{
 				break;
 				case "a":try{
 				System.out.println("["+t.getText2(t.getOp(t.getCurrent())[0])+"]");
-				t.st.add(t.getDest(t.getOp(t.getCurrent())[0]));
+				t.st.add(t.getKey(t.getCurrent()));
 				t.finder(t.getDest(t.getOp(t.getCurrent())[0]));
 				System.out.println(t.getDesc(t.getCurrent()));
 				t.printOptions(t.getCurrent());}catch(NullPointerException e){
@@ -75,7 +83,7 @@ class cyoa{
 				
 				case "b":try{
 				System.out.println("["+t.getText2(t.getOp(t.getCurrent())[1])+"]");
-				t.st.add(t.getDest(t.getOp(t.getCurrent())[1]));
+				t.st.add(t.getKey(t.getCurrent()));
 				t.finder(t.getDest(t.getOp(t.getCurrent())[1]));
 				System.out.println(t.getDesc(t.getCurrent()));
 				t.printOptions(t.getCurrent());}catch(NullPointerException e){
@@ -83,7 +91,7 @@ class cyoa{
 				
 				case "c":try{
 				System.out.println("["+t.getText2(t.getOp(t.getCurrent())[2])+"]");
-				t.st.add(t.getDest(t.getOp(t.getCurrent())[2]));
+				t.st.add(t.getKey(t.getCurrent()));
 				t.finder(t.getDest(t.getOp(t.getCurrent())[2]));
 				System.out.println(t.getDesc(t.getCurrent()));
 				t.printOptions(t.getCurrent());}catch(NullPointerException e){
@@ -91,7 +99,7 @@ class cyoa{
 				
 				case "d":try{
 				System.out.println("["+t.getText2(t.getOp(t.getCurrent())[3])+"]");
-				t.st.add(t.getDest(t.getOp(t.getCurrent())[3]));
+				t.st.add(t.getKey(t.getCurrent()));
 				t.finder(t.getDest(t.getOp(t.getCurrent())[3]));
 				System.out.println(t.getDesc(t.getCurrent()));
 				t.printOptions(t.getCurrent());}catch(NullPointerException e){
@@ -99,7 +107,7 @@ class cyoa{
 				
 				case "e":try{
 				System.out.println("["+t.getText2(t.getOp(t.getCurrent())[4])+"]");
-				t.st.add(t.getDest(t.getOp(t.getCurrent())[4]));
+				t.st.add(t.getKey(t.getCurrent()));
 				t.finder(t.getDest(t.getOp(t.getCurrent())[4]));
 				System.out.println(t.getDesc(t.getCurrent()));
 				t.printOptions(t.getCurrent());}catch(NullPointerException e){
@@ -107,7 +115,7 @@ class cyoa{
 				
 				case "f":try{
 				System.out.println("["+t.getText2(t.getOp(t.getCurrent())[5])+"]");
-				t.st.add(t.getDest(t.getOp(t.getCurrent())[5]));
+				t.st.add(t.getKey(t.getCurrent()));
 				t.finder(t.getDest(t.getOp(t.getCurrent())[5]));
 				System.out.println(t.getDesc(t.getCurrent()));
 				t.printOptions(t.getCurrent());}catch(NullPointerException e){
@@ -115,7 +123,7 @@ class cyoa{
 				
 				case "g":try{
 				System.out.println("["+t.getText2(t.getOp(t.getCurrent())[6])+"]");
-				t.st.add(t.getDest(t.getOp(t.getCurrent())[6]));
+				t.st.add(t.getKey(t.getCurrent()));
 				t.finder(t.getDest(t.getOp(t.getCurrent())[6]));
 				System.out.println(t.getDesc(t.getCurrent()));
 				t.printOptions(t.getCurrent());}catch(NullPointerException e){
@@ -123,7 +131,7 @@ class cyoa{
 				
 				case "h":try{
 				System.out.println("["+t.getText2(t.getOp(t.getCurrent())[7])+"]");
-				t.st.add(t.getDest(t.getOp(t.getCurrent())[7]));
+				t.st.add(t.getKey(t.getCurrent()));
 				t.finder(t.getDest(t.getOp(t.getCurrent())[7]));
 				System.out.println(t.getDesc(t.getCurrent()));
 				t.printOptions(t.getCurrent());}catch(NullPointerException e){
@@ -131,7 +139,7 @@ class cyoa{
 				
 				case "i":try{
 				System.out.println("["+t.getText2(t.getOp(t.getCurrent())[8])+"]");
-				t.st.add(t.getDest(t.getOp(t.getCurrent())[8]));
+				t.st.add(t.getKey(t.getCurrent()));
 				t.finder(t.getDest(t.getOp(t.getCurrent())[8]));
 				System.out.println(t.getDesc(t.getCurrent()));
 				t.printOptions(t.getCurrent());}catch(NullPointerException e){
@@ -139,7 +147,7 @@ class cyoa{
 				
 				case "j":try{
 				System.out.println("["+t.getText2(t.getOp(t.getCurrent())[9])+"]");
-				t.st.add(t.getDest(t.getOp(t.getCurrent())[9]));
+				t.st.add(t.getKey(t.getCurrent()));
 				t.finder(t.getDest(t.getOp(t.getCurrent())[9]));
 				System.out.println(t.getDesc(t.getCurrent()));
 				t.printOptions(t.getCurrent());}catch(NullPointerException e){
@@ -147,7 +155,7 @@ class cyoa{
 				
 				case "k":try{
 				System.out.println("["+t.getText2(t.getOp(t.getCurrent())[10])+"]");
-				t.st.add(t.getDest(t.getOp(t.getCurrent())[10]));
+				t.st.add(t.getKey(t.getCurrent()));
 				t.finder(t.getDest(t.getOp(t.getCurrent())[10]));
 				System.out.println(t.getDesc(t.getCurrent()));
 				t.printOptions(t.getCurrent());}catch(NullPointerException e){
@@ -155,7 +163,7 @@ class cyoa{
 				
 				case "l":try{
 				System.out.println("["+t.getText2(t.getOp(t.getCurrent())[11])+"]");
-				t.st.add(t.getDest(t.getOp(t.getCurrent())[11]));
+				t.st.add(t.getKey(t.getCurrent()));
 				t.finder(t.getDest(t.getOp(t.getCurrent())[11]));
 				System.out.println(t.getDesc(t.getCurrent()));
 				t.printOptions(t.getCurrent());}catch(NullPointerException e){
